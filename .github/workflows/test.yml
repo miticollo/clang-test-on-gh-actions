@@ -27,6 +27,7 @@ jobs:
         run: clang -isysroot $(xcrun --sdk iphoneos --show-sdk-path) -march=native --target=arm64-apple-ios16.0 -dM -E - </dev/null
 
       - name: -march=native -arch arm64 with Clang/LLVM (Homebrew) 14.x.x
+        if: ${{ success() || failure() }}
         run: $(brew --prefix llvm@14)/bin/clang -march=native -arch arm64 -dM -E - </dev/null
       
       - name: ❌ -march=native -arch arm64

@@ -15,8 +15,10 @@ jobs:
 
       - name: ✅ Detecting CPU architecture compile-time
         run: clang -arch arm64 -dM -E - </dev/null
+
+      - name: ❔Detecting CPU architecture compile-time
+        run: clang -march=native --target=arm64-apple-ios16.0 -dM -E - </dev/null
       
       - name: ❌ Detecting CPU architecture compile-time
         run: clang -march=native -arch arm64 -dM -E - </dev/null
         
-

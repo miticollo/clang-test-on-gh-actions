@@ -10,15 +10,15 @@ jobs:
   build:
     runs-on: macos-13
     steps:
-      - name: ✅ Detecting CPU architecture compile-time
+      - name: ✅ -march=native
         run: clang -march=native -dM -E - </dev/null
 
-      - name: ✅ Detecting CPU architecture compile-time
+      - name: ✅ -arch arm64
         run: clang -arch arm64 -dM -E - </dev/null
 
-      - name: ❔Detecting CPU architecture compile-time
+      - name: ✅ -march=native --target=arm64-apple-ios16.0
         run: clang -isysroot $(shell xcrun --sdk iphoneos --show-sdk-path) -march=native --target=arm64-apple-ios16.0 -dM -E - </dev/null
       
-      - name: ❌ Detecting CPU architecture compile-time
+      - name: ❌ -march=native -arch arm64
         run: clang -march=native -arch arm64 -dM -E - </dev/null
         
